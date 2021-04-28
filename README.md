@@ -1,0 +1,2 @@
+# Headspace VSCode extension
+

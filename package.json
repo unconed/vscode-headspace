@@ -1,0 +1,36 @@
+{
+	"name": "vscode-headspace",
+	"description": "Headspace server for vscode",
+	"version": "0.0.1",
+	"publisher": "acko.net",
+	"repository": "https://github.com/unconed/headspace",
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"activationEvents": [
+		"onCommand:extension.headspace.start",
+		"onCommand:extension.headspace.stop"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.headspace.start",
+				"title": "Start Headspace Server"
+			},
+			{
+				"command": "extension.headspace.stop",
+				"title": "Stop Headspace Server"
+			}
+		]
+	},
+	"scripts": {},
+	"devDependencies": {
+		"@types/vscode": "^1.32.0"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1"
+	}
+}
