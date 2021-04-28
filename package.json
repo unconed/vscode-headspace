@@ -1,8 +1,8 @@
 {
 	"name": "vscode-headspace",
 	"description": "Headspace server for vscode",
-	"version": "0.0.1",
-	"publisher": "acko.net",
+	"version": "1.0.0",
+	"publisher": "StevenWittens",
 	"repository": "https://github.com/unconed/headspace",
 	"engines": {
 		"vscode": "^1.32.0"
@@ -11,7 +11,7 @@
 		"onCommand:extension.headspace.start",
 		"onCommand:extension.headspace.stop"
 	],
-	"main": "./extension.js",
+	"main": "./dist/main.js",
 	"contributes": {
 		"commands": [
 			{
@@ -24,9 +24,15 @@
 			}
 		]
 	},
-	"scripts": {},
+	"scripts": {
+		"vscode:prepublish": "npm run -S esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.js --bundle --outfile=dist/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run -S esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
+	},
 	"devDependencies": {
-		"@types/vscode": "^1.32.0"
+		"@types/vscode": "^1.32.0",
+		"esbuild": "^0.11.15"
 	},
 	"dependencies": {
 		"body-parser": "^1.19.0",
